@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "formulario-trocas-chiller",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ]
+}
