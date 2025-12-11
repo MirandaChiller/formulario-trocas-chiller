@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocas e Devoluções - Chiller Peças</title>
+    
+    <!-- Bytescale Upload Widget -->
+    <script src="https://js.bytescale.com/upload-widget/v4"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: -20px auto 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .atencao-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0066cc;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .atencao-box h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .atencao-box ol {
+            margin-left: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .atencao-box li {
+            margin-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        label .required {
+            color: #dc3545;
+            margin-left: 3px;
+        }
+
+        .help-text {
+            display: block;
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+            font-weight: normal;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-upload-area {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .file-upload-area:hover {
+            border-color: #0066cc;
+            background-color: #f0f7ff;
+        }
+
+        .file-upload-area.dragover {
+            border-color: #0066cc;
+            background-color: #e6f2ff;
+        }
+
+        .upload-icon {
+            font-size: 40px;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .upload-subtext {
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .file-list {
+            margin-top: 15px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .file-name {
+            font-size: 13px;
+            color: #333;
+            flex: 1;
+        }
+
+        .file-remove {
+            background: none;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 0 5px;
+        }
+
+        .upload-instructions {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .upload-instructions h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .upload-instructions ul {
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .upload-instructions li {
+            margin-bottom: 5px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 25px;
+            color: #6c757d;
+            font-size: 13px;
+        }
+
+        .footer-text a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        .loading-spinner {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0066cc;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .alert-error {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .logo {
+                position: static;
+                margin-top: 10px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">Chiller Peças</div>
+        <h1>TROCAS E DEVOLUÇÕES</h1>
+    </div>
+
+    <div class="container">
+        <div class="alert alert-success" id="successAlert">
+            ✓ Formulário enviado com sucesso! Nossa equipe entrará em contato em breve.
+        </div>
+
+        <div class="alert alert-error" id="errorAlert">
+            ✗ Erro ao enviar formulário. Por favor, tente novamente.
+        </div>
+
+        <h2 class="form-title">Formulário para Trocas ou Devoluções</h2>
+        
+        <p class="intro-text">
+            Para acionamento de garantia, troca ou devolução, por favor, preencha o formulário abaixo 
+            com as informações necessárias. Nossa equipe entrará em contato o mais breve possível 
+            para auxiliar no processo.
+        </p>
+
+        <div class="atencao-box">
+            <h3>Atenção:</h3>
+            <ol>
+                <li>Trocas ou devoluções possuem prazo de 7 dias corridos após o recebimento da compra;</li>
+                <li>Concedemos garantia de 90 dias corridos;</li>
+                <li>Preencha todos os campos obrigatórios para agilizar o atendimento;</li>
+                <li>Descreva o motivo da troca ou devolução com clareza.</li>
+            </ol>
+        </div>
+
+        <form id="trocasForm">
+            <div class="form-group">
+                <label>
+                    Cliente (razão social ou nome apresentado na Nota Fiscal)
+                    <span class="required">*</span>
+                </label>
+                <input type="text" id="cliente" name="cliente" placeholder="Digite a sua resposta" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Nome do solicitante
+                    <span class="required">*</span>
+                </label>
+                <input type="text" id="solicitante" name="solicitante" placeholder="Digite o seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Endereço de e-mail
+                    <span class="required">*</span>
+                    <span class="help-text">Contato que pode ser utilizado para as tratativas do caso.</span>
+                </label>
+                <input type="email" id="email" name="email" placeholder="Insira o seu endereço de e-mail" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Telefone/ WhatsApp com DDD
+                    <span class="required">*</span>
+                    <span class="help-text">Contato que pode ser utilizado para as tratativas do caso.</span>
+                </label>
+                <input type="tel" id="telefone" name="telefone" placeholder="Digite um número" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Número da NF
+                    <span class="required">*</span>
+                </label>
+                <input type="text" id="numeroNF" name="numeroNF" placeholder="Digite um número" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Você gostaria de solicitar
+                    <span class="required">*</span>
+                </label>
+                <select id="tipoSolicitacao" name="tipoSolicitacao" required>
+                    <option value="">Escolha...</option>
+                    <option value="troca">Troca</option>
+                    <option value="devolucao">Devolução</option>
+                    <option value="garantia">Garantia</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Nome do(s) item(s)
+                    <span class="required">*</span>
+                    <span class="help-text">Conforme descrito na NF.</span>
+                </label>
+                <input type="text" id="itens" name="itens" placeholder="Digite a sua resposta" required>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Descrição do caso
+                    <span class="required">*</span>
+                    <span class="help-text">Forneça o máximo de detalhes possível. Sua precisão agilizará o processo.</span>
+                </label>
+                <textarea id="descricao" name="descricao" placeholder="Digite a sua resposta" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    Fotos e/ou vídeos do(s) item(s)
+                    <span class="required">*</span>
+                </label>
+                
+                <div class="file-upload-area" id="dropArea">
+                    <div class="upload-icon">📎</div>
+                    <div class="upload-text">Clique para selecionar arquivos</div>
+                    <div class="upload-subtext">Fotos e vídeos serão enviados para a nuvem</div>
+                </div>
+
+                <div class="file-list" id="fileList"></div>
+
+                <div class="upload-instructions">
+                    <h4>Instruções para Envio de Fotos e/ou Vídeos</h4>
+                    <ul>
+                        <li><strong>Imagens Nítidas:</strong> Certifique-se de que estejam claras e detalhadas.</li>
+                        <li><strong>Enquadramento:</strong> Capture o produto inteiro, destacando o defeito de diferentes ângulos.</li>
+                        <li><strong>Demonstração:</strong> Em vídeos, mostre claramente o problema.</li>
+                        <li><strong>Formatos:</strong> Envie arquivos em JPG, PNG ou MP4.</li>
+                        <li><strong>Identificação:</strong> Se possível, inclua uma foto da etiqueta ou número de série do produto.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Enviar
+                <span class="loading-spinner" id="loadingSpinner"></span>
+            </button>
+
+            <div class="footer-text">
+                Nunca informe senhas nos Formulários da Asana.<br>
+                <a href="#">Fazer denúncia</a> • 
+                <a href="#">Termos</a> • 
+                <a href="#">Privacidade</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Elementos do DOM
+        const form = document.getElementById('trocasForm');
+        const dropArea = document.getElementById('dropArea');
+        const fileList = document.getElementById('fileList');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+
+        let uploadedFiles = []; // Array de arquivos já enviados para Bytescale
+
+        // URL do webhook
+        const WEBHOOK_URL = 'https://webhook.hablla.com/v1/693974e5d7ea981aba018c5c';
+
+        // Configuração Bytescale
+        const bytescaleOptions = {
+            apiKey: "public_W142hVk77NCbcc3H6Y88fZ3d7YZg", // Chave pública Bytescale
+            maxFileCount: 10,
+            mimeTypes: ["image/jpeg", "image/png", "image/gif", "image/webp", "video/mp4", "video/quicktime"],
+            editor: {
+                images: {
+                    crop: false,
+                    preview: true
+                }
+            },
+            locale: {
+                "addAnotherFileBtn": "Adicionar mais arquivos",
+                "addAnotherImageBtn": "Adicionar mais imagens",
+                "cancelBtn": "Cancelar",
+                "cancelBtnClicked": "Cancelado",
+                "continueBtn": "Continuar",
+                "cropBtn": "Cortar",
+                "doneBtn": "Pronto",
+                "finishBtn": "Finalizar",
+                "maxFilesReachedPrefix": "Máximo de",
+                "maxImagesReachedPrefix": "Máximo de",
+                "orDragDropFile": "...ou arraste e solte arquivos aqui",
+                "orDragDropImage": "...ou arraste e solte imagens aqui",
+                "uploadFileBtn": "Selecionar Arquivo",
+                "uploadImageBtn": "Selecionar Imagem",
+                "xOfY": "de"
+            },
+            styles: {
+                colors: {
+                    primary: "#0066cc"
+                }
+            }
+        };
+
+        // Remover eventos de drag and drop (não funcionam com Bytescale)
+        // Ao clicar na área, abre o Bytescale Widget
+        dropArea.addEventListener('click', openBytescaleWidget);
+
+        function openBytescaleWidget() {
+            Bytescale.UploadWidget.open(bytescaleOptions).then(
+                files => {
+                    if (files && files.length > 0) {
+                        files.forEach(file => {
+                            uploadedFiles.push({
+                                nome: file.originalFile.originalFileName,
+                                url: file.fileUrl,
+                                tamanho: file.originalFile.size,
+                                tipo: file.originalFile.mime
+                            });
+                        });
+                        updateFileList();
+                    }
+                },
+                error => {
+                    if (error.message !== 'User cancelled upload.') {
+                        console.error('Erro no upload:', error);
+                        alert('Erro ao fazer upload dos arquivos. Tente novamente.');
+                    }
+                }
+            );
+        }
+
+        function updateFileList() {
+            fileList.innerHTML = '';
+            uploadedFiles.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span class="file-name">📄 ${file.nome} (${formatFileSize(file.tamanho)})</span>
+                    <button type="button" class="file-remove" onclick="removeFile(${index})">×</button>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            updateFileList();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+        }
+
+        // Envio do formulário
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Validar se há arquivos
+            if (uploadedFiles.length === 0) {
+                alert('Por favor, anexe ao menos uma foto ou vídeo do(s) item(s).');
+                return;
+            }
+
+            // Desabilitar botão e mostrar loading
+            submitBtn.disabled = true;
+            loadingSpinner.style.display = 'inline-block';
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+
+            try {
+                // Preparar dados do formulário
+                const formData = {
+                    cliente: document.getElementById('cliente').value,
+                    solicitante: document.getElementById('solicitante').value,
+                    email: document.getElementById('email').value,
+                    telefone: document.getElementById('telefone').value,
+                    numeroNF: document.getElementById('numeroNF').value,
+                    tipoSolicitacao: document.getElementById('tipoSolicitacao').value,
+                    itens: document.getElementById('itens').value,
+                    descricao: document.getElementById('descricao').value,
+                    arquivos: uploadedFiles, // Agora são URLs, não base64!
+                    dataEnvio: new Date().toISOString(),
+                    origem: 'Formulário Web - Trocas e Devoluções',
+                    uploadMethod: 'Bytescale Cloud Storage'
+                };
+
+                // Enviar para o webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Sucesso
+                    successAlert.style.display = 'block';
+                    form.reset();
+                    uploadedFiles = [];
+                    updateFileList();
+                    
+                    // Scroll para o topo
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    // Esconder alerta após 5 segundos
+                    setTimeout(() => {
+                        successAlert.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Erro na resposta do servidor');
+                }
+
+            } catch (error) {
+                console.error('Erro ao enviar formulário:', error);
+                errorAlert.style.display = 'block';
+                
+                // Scroll para o topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Esconder alerta após 5 segundos
+                setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                }, 5000);
+            } finally {
+                // Reabilitar botão e esconder loading
+                submitBtn.disabled = false;
+                loadingSpinner.style.display = 'none';
+            }
+        });
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
