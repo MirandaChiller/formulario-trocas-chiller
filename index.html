@@ -286,24 +286,6 @@
             text-decoration: underline;
         }
 
-        .loading-spinner {
-            display: none;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #0066cc;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            margin-left: 10px;
-            display: inline-block;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         .alert {
             padding: 15px 20px;
             border-radius: 6px;
@@ -420,7 +402,7 @@
 
             <div class="form-group">
                 <label>
-                    Você gostaria de solicitar
+                    VocÁª gostaria de solicitar
                     <span class="required">*</span>
                 </label>
                 <select id="tipoSolicitacao" name="tipoSolicitacao" required>
@@ -456,7 +438,7 @@
                 </label>
                 
                 <div class="file-upload-area" id="dropArea">
-                    <div class="upload-icon">📎</div>
+                    <div class="upload-icon">ðŸ“Ž</div>
                     <div class="upload-text">Clique para selecionar arquivos</div>
                     <div class="upload-subtext">Fotos e vídeos serão enviados para a nuvem</div>
                 </div>
@@ -467,7 +449,7 @@
                     <h4>Instruções para Envio de Fotos e/ou Vídeos</h4>
                     <ul>
                         <li><strong>Imagens Nítidas:</strong> Certifique-se de que estejam claras e detalhadas.</li>
-                        <li><strong>Enquadramento:</strong> Capture o produto inteiro, destacando o defeito de diferentes ângulos.</li>
+                        <li><strong>Enquadramento:</strong> Capture o produto inteiro, destacando o defeito de diferentes Á¢ngulos.</li>
                         <li><strong>Demonstração:</strong> Em vídeos, mostre claramente o problema.</li>
                         <li><strong>Formatos:</strong> Envie arquivos em JPG, PNG ou MP4.</li>
                         <li><strong>Identificação:</strong> Se possível, inclua uma foto da etiqueta ou número de série do produto.</li>
@@ -477,13 +459,12 @@
 
             <button type="submit" class="submit-btn" id="submitBtn">
                 Enviar
-                <span class="loading-spinner" id="loadingSpinner"></span>
             </button>
 
             <div class="footer-text">
                 Nunca informe senhas nos Formulários da Asana.<br>
-                <a href="#">Fazer denúncia</a> • 
-                <a href="#">Termos</a> • 
+                <a href="#">Fazer denúncia</a> â€¢ 
+                <a href="#">Termos</a> â€¢ 
                 <a href="#">Privacidade</a>
             </div>
         </form>
@@ -495,7 +476,6 @@
         const dropArea = document.getElementById('dropArea');
         const fileList = document.getElementById('fileList');
         const submitBtn = document.getElementById('submitBtn');
-        const loadingSpinner = document.getElementById('loadingSpinner');
         const successAlert = document.getElementById('successAlert');
         const errorAlert = document.getElementById('errorAlert');
 
@@ -506,7 +486,7 @@
 
         // Configuração Bytescale
         const bytescaleOptions = {
-            apiKey: "public_W142hVk77NCbcc3H6Y88fZ3d7YZg", // Chave pública Bytescale
+            apiKey: "public_W23MTV2C98Ng2bqAvGpQnM3N9Gmn", // Chave pública Bytescale
             maxFileCount: 10,
             mimeTypes: ["image/jpeg", "image/png", "image/gif", "image/webp", "video/mp4", "video/quicktime"],
             editor: {
@@ -573,8 +553,8 @@
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
                 fileItem.innerHTML = `
-                    <span class="file-name">📄 ${file.nome} (${formatFileSize(file.tamanho)})</span>
-                    <button type="button" class="file-remove" onclick="removeFile(${index})">×</button>
+                    <span class="file-name">ðŸ“„ ${file.nome} (${formatFileSize(file.tamanho)})</span>
+                    <button type="button" class="file-remove" onclick="removeFile(${index})">Á—</button>
                 `;
                 fileList.appendChild(fileItem);
             });
@@ -603,9 +583,8 @@
                 return;
             }
 
-            // Desabilitar botão e mostrar loading
+            // Desabilitar botão
             submitBtn.disabled = true;
-            loadingSpinner.style.display = 'inline-block';
             successAlert.style.display = 'none';
             errorAlert.style.display = 'none';
 
@@ -665,9 +644,8 @@
                     errorAlert.style.display = 'none';
                 }, 5000);
             } finally {
-                // Reabilitar botão e esconder loading
+                // Reabilitar botão
                 submitBtn.disabled = false;
-                loadingSpinner.style.display = 'none';
             }
         });
 
